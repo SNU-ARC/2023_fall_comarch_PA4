@@ -18,11 +18,11 @@ typedef struct trans_func{
 
 typedef enum Type
 {
-	L1_Miss = 0,
-	L1_Hit,
+	L1_Hit = 0,
+	L1_Miss,
 	L1_Eviction,
-	L2_Miss,
 	L2_Hit,
+	L2_Miss,
 	L2_Eviction,
 	L2_Write,
 	Mem_Write,

@@ -18,4 +18,4 @@ clean:
 	rm -rf *.o
 	rm -f *.tar
 	rm -f csim
-	rm -f .csim_results .marker
+	rm -f csim_results .marker
