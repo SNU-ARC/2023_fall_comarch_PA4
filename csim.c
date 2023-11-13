@@ -67,8 +67,8 @@ int E2; /* associativity of L2 */
 unsigned long long int lru_counter = 1;
 unsigned long long int l2_lru_counter = 1;
 
-int l1_fifo = 0;
-int l2_fifo = 0;
+int* l1_fifo = 0;
+int* l2_fifo = 0;
 
 /* The cache we are simulating */
 cache_t cache, cache_l2;  
@@ -106,6 +106,15 @@ void initCache()
     /* Computes set index mask */
     set_index_mask = (mem_addr_t) (pow(2, s) - 1);
     set_index_mask_l2 = (mem_addr_t) (pow(2, s2) - 1);
+
+    l1_fifo = (int*)malloc(sizeof(int) * S);
+    l2_fifo = (int*)malloc(sizeof(int) * S2);  
+    for (i=0; i<S; i++){  
+    	l1_fifo[i] = 0;
+    }
+    for (i=0; i<S2; i++){  
+    	l2_fifo[i] = 0;
+    }
 }
 
 
@@ -124,6 +133,9 @@ void freeCache()
 	    free(cache_l2[i]);
     }
     free(cache_l2);
+
+    free(l1_fifo);
+    free(l2_fifo); 
 }
 
 
